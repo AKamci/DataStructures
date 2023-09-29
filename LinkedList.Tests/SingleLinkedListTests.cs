@@ -1,6 +1,6 @@
 namespace LinkedList.Tests
 {
-    public class UnitTest1
+    public class SingleLinkedListTests
     {
         [Fact]
         public void Test1()
