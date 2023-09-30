@@ -1,7 +1,9 @@
 ﻿namespace LinkedList
 {
-    public class SingleLinkedList
+    public class SingleLinkedList<T>
     {
 
+
+        
     }
 }
