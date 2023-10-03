@@ -36,7 +36,7 @@
             SingleLinkedList<int> linkedList = new SingleLinkedList<int>();
 
             // Act
-            var type = linkedList.GetType();
+            var type = linkedList.ListType;
 
             // Assess
             Assert.IsType<int>(type);
@@ -84,8 +84,8 @@
 
 
             // Assess
-            var CheckTail = linkedList.Tail();
-            Assert.Equal(85, CheckTail);
+            var tail = linkedList.Tail();
+            Assert.Equal(85, tail.Value);
 
         }
 
@@ -97,10 +97,6 @@
             SingleLinkedList<int> linkedList = new SingleLinkedList<int>();
 
             // Act
-            // AddLast en sona eklemek
-            // AddFirst en başa eklemek
-            // 
-
             linkedList.AddLast(35);
             linkedList.AddLast(45);
             linkedList.AddLast(55);
@@ -109,7 +105,7 @@
             linkedList.AddLast(85);
 
             // Assess
-            var CheckTail = linkedList.Remove(4);
+            var checkTail = linkedList.Remove(4);
 
             var Control = linkedList.Contains(65);
 
