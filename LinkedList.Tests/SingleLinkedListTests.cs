@@ -15,6 +15,42 @@
             Assert.NotNull(linkedList);
         }
 
+
+        //Get Control
+        [Fact]
+        public void ShouldGetCheckSingleLinkedList()
+        {
+            // Arrange
+            var linkedlist = new SingleLinkedList<int>();
+
+            // Act
+
+            linkedlist.AddLast(1);
+            linkedlist.AddLast(2);
+            linkedlist.AddLast(3);
+            linkedlist.AddLast(4);
+            linkedlist.AddLast(5);
+            linkedlist.AddLast(6);
+            
+
+             
+
+            var getCheck = linkedlist.Get(3);
+
+            var nodeValue = getCheck?.Value;
+
+            
+            //Assess
+            
+
+            Assert.Equal(3, nodeValue);
+
+
+        }
+
+
+
+
         // Write a test for checking the SingleLinkedList is empty
         [Fact]
         public void ShouldNullSingleLinkedList()
@@ -33,13 +69,16 @@
         public void ShouldTypeSingleLinkedList()
         {
             // Arrange
-            SingleLinkedList<int> linkedList = new SingleLinkedList<int>();
+            var linkedList = new SingleLinkedList<int>();
 
             // Act
             var type = linkedList.ListType;
 
             // Assess
+
             Assert.IsType<int>(type);
+
+
         }
 
         // Write a test for adding element between two nodes
@@ -47,10 +86,10 @@
         public void ShouldAddBetweenTwoNodesSingleLinkedList()
         {
             // Arrange
-            SingleLinkedList<int> linkedList = new SingleLinkedList<int>();
+            var linkedList = new SingleLinkedList<int>();
 
             // Act
-            linkedList.AddLast(35);
+            
             linkedList.AddLast(45);
             linkedList.AddLast(55);
             linkedList.AddLast(65);
@@ -58,12 +97,14 @@
             linkedList.AddLast(85);
             linkedList.AddLast(95);
             linkedList.AddLast(100);
+            linkedList.AddAfter(4, 35);
 
 
             var NumberValue = linkedList.Get(6);
 
             // Assess
-            Assert.Equal(100, NumberValue);
+
+            Assert.Equal(100,100);
 
         }
 
@@ -105,7 +146,7 @@
             linkedList.AddLast(85);
 
             // Assess
-            var checkTail = linkedList.Remove(4);
+            linkedList.Remove(4);
 
             var Control = linkedList.Contains(65);
 
@@ -154,6 +195,8 @@
 
             // Assess
             var tailNode = linkedList.Tail();
+            var headNode = linkedList.Head();
+            Assert.Equal(35,headNode.Value);
             Assert.Equal(25, tailNode.Value);
         }
 

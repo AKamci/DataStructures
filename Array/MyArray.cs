@@ -45,6 +45,27 @@
             _array[index] = default(T);
         }
 
+        public void Swap(int index,int index2)
+        {
+            if (_array.Length < index|| _array.Length < index2)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            else
+            {
+
+                T value = _array[index];
+
+                _array[index]  = _array[index2];
+                _array[index2] = value;
+
+            }
+
+
+        }
+
+
+
         public void Enlarge(int new_size)
         {
             

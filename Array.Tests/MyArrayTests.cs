@@ -20,6 +20,40 @@ namespace Array.Tests
         }
 
 
+
+        [Fact]
+
+        public void ShouldSwapInArray() 
+        {
+            //Arrange
+            var array = new MyArray<int>();
+
+            //Act
+
+            array.Add(10);
+            array.Add(20);
+            array.Add(30);
+            array.Add(40);
+            array.Add(50);
+            array.Add(60);
+            array.Add(70);
+            array.Add(80);
+            array.Add(90);
+
+
+
+            //Assess
+
+            array.Swap(1,5);
+
+            var value = array.Get(1);
+
+            Assert.Equal(60, value);
+
+
+        }
+
+
         [Fact]
         public void CanRemoveNumberFromArray()
         {
