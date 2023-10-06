@@ -3,11 +3,9 @@
     public class MyArray<T>
     {
         private T[] _array;
-        private int _size;
         private int _index = 0;
         public MyArray(int size = 100)
         {
-            _size = size;
             _array = new T[size];
         }
 
@@ -58,8 +56,6 @@
             _array[targetIndex] = temp;
         }
 
-
-
         public void Enlarge(int new_size)
         {
 
@@ -85,9 +81,6 @@
         {
             _array = new T[0];
         }
-
-
-
 
         // Lambda
         public int Length => _array.Length;
