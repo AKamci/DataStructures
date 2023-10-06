@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Array.Tests", "Array.Tests\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnit_Test", "NUnit_Test\NUnit_Test.csproj", "{E895535C-DFFA-4777-8949-FF8AED959EF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\LinkedList.csproj", "{FEFABCD8-6C92-456C-87FB-C206CC66B056}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList", "LinkedList\LinkedList.csproj", "{FEFABCD8-6C92-456C-87FB-C206CC66B056}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList.Tests", "LinkedList.Tests\LinkedList.Tests.csproj", "{FD0B9C9F-E12F-4199-920F-C06FC28936BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList.Tests", "LinkedList.Tests\LinkedList.Tests.csproj", "{FD0B9C9F-E12F-4199-920F-C06FC28936BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Datastructures", "Datastructures", "{3594BFF3-8CFF-4D3C-A0B9-5BB500D88708}"
 EndProject

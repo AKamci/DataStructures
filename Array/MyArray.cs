@@ -19,7 +19,7 @@
         public T[] Clear()
         {
             _array.ToList().Clear();
-            
+
             _index = 0;
 
             return _array;
@@ -32,7 +32,7 @@
 
             return result;
 
-         
+
         }
 
         public T Get(int index)
@@ -45,30 +45,24 @@
             _array[index] = default(T);
         }
 
-        public void Swap(int index,int index2)
+        public void Swap(int sourceIndex, int targetIndex)
         {
-            if (_array.Length < index|| _array.Length < index2)
+            if (_array.Length < sourceIndex || _array.Length < targetIndex)
             {
                 throw new IndexOutOfRangeException();
             }
-            else
-            {
 
-                T value = _array[index];
+            T temp = _array[sourceIndex];
 
-                _array[index]  = _array[index2];
-                _array[index2] = value;
-
-            }
-
-
+            _array[sourceIndex] = _array[targetIndex];
+            _array[targetIndex] = temp;
         }
 
 
 
         public void Enlarge(int new_size)
         {
-            
+
             if (_array.Length > new_size)
             {
 

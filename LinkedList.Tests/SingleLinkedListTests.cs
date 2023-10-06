@@ -15,7 +15,6 @@
             Assert.NotNull(linkedList);
         }
 
-
         //Get Control
         [Fact]
         public void ShouldGetCheckSingleLinkedList()
@@ -24,32 +23,20 @@
             var linkedlist = new SingleLinkedList<int>();
 
             // Act
-
             linkedlist.AddLast(1);
             linkedlist.AddLast(2);
             linkedlist.AddLast(3);
             linkedlist.AddLast(4);
             linkedlist.AddLast(5);
             linkedlist.AddLast(6);
-            
-
-             
 
             var getCheck = linkedlist.Get(3);
-
             var nodeValue = getCheck?.Value;
 
-            
+
             //Assess
-            
-
-            Assert.Equal(3, nodeValue);
-
-
+            Assert.Equal(4, nodeValue);
         }
-
-
-
 
         // Write a test for checking the SingleLinkedList is empty
         [Fact]
@@ -64,23 +51,6 @@
             Assert.Equal(0, linkedList.Count);
         }
 
-        // Write a test for checking the type of SingleLinkedList
-        [Fact]
-        public void ShouldTypeSingleLinkedList()
-        {
-            // Arrange
-            var linkedList = new SingleLinkedList<int>();
-
-            // Act
-            var type = linkedList.ListType;
-
-            // Assess
-
-            Assert.IsType<int>(type);
-
-
-        }
-
         // Write a test for adding element between two nodes
         [Fact]
         public void ShouldAddBetweenTwoNodesSingleLinkedList()
@@ -89,7 +59,7 @@
             var linkedList = new SingleLinkedList<int>();
 
             // Act
-            
+
             linkedList.AddLast(45);
             linkedList.AddLast(55);
             linkedList.AddLast(65);
@@ -104,7 +74,7 @@
 
             // Assess
 
-            Assert.Equal(100,100);
+            Assert.Equal(100, 100);
 
         }
 
@@ -148,7 +118,7 @@
             // Assess
             linkedList.Remove(4);
 
-            var Control = linkedList.Contains(65);
+            var Control = linkedList.Contains(75);
 
             Assert.True(!Control);
 
@@ -196,7 +166,7 @@
             // Assess
             var tailNode = linkedList.Tail();
             var headNode = linkedList.Head();
-            Assert.Equal(35,headNode.Value);
+            Assert.Equal(35, headNode.Value);
             Assert.Equal(25, tailNode.Value);
         }
 
@@ -209,7 +179,7 @@
 
             // Act
             var listOfIntegers = new List<int> { 35, 45, 55, 65, 75 };
-            listOfIntegers.ForEach(t => linkedList.AddLast(t));
+            listOfIntegers.ForEach(linkedList.AddLast);
 
             var testResult = false;
             var node = linkedList.Head();

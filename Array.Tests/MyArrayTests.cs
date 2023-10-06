@@ -11,7 +11,7 @@ namespace Array.Tests
             // Act
             array.Add(25);
 
-           
+
 
             // Assess
             var result = array.Get(0);
@@ -22,8 +22,7 @@ namespace Array.Tests
 
 
         [Fact]
-
-        public void ShouldSwapInArray() 
+        public void ShouldSwapInArray()
         {
             //Arrange
             var array = new MyArray<int>();
@@ -44,7 +43,7 @@ namespace Array.Tests
 
             //Assess
 
-            array.Swap(1,5);
+            array.Swap(1, 5);
 
             var value = array.Get(1);
 
@@ -100,7 +99,7 @@ namespace Array.Tests
 
             // Assess
             var result = array.Contains(25);
-            
+
 
             Assert.Equal(true, result);
         }
@@ -112,8 +111,8 @@ namespace Array.Tests
             var array = new MyArray<int>();
 
             //Act
-            
-           array.Enlarge(175);
+
+            array.Enlarge(175);
 
             //Assess
 
@@ -151,10 +150,10 @@ namespace Array.Tests
 
             Assert.Equal(a, result);
         }
-        
+
         [Theory]
-        [InlineData(25,0)]
-        public void CanRemoveNumberFromArrayTheory(int a,int b)
+        [InlineData(25, 0)]
+        public void CanRemoveNumberFromArrayTheory(int a, int b)
         {
             // Arrange
             var array = new MyArray<int>();
@@ -170,7 +169,7 @@ namespace Array.Tests
         }
 
         [Theory]
-        [InlineData(25,35,45)]
+        [InlineData(25, 35, 45)]
         public void CanClearNumberFromArrayTheory(int a, int b, int c)
         {
             // Arrange
@@ -240,10 +239,8 @@ namespace Array.Tests
 
 
         [Fact]
-
         public void ShouldNotEnLargeArray()
         {
-
 
             //Arrange
             var array = new MyArray<int>();
@@ -251,11 +248,11 @@ namespace Array.Tests
 
             //Act
 
-            
+
 
             //Assess
 
-            Assert.Throws<ArrayEnlargeException>(() => array.Enlarge(90)); 
+            Assert.Throws<ArrayEnlargeException>(() => array.Enlarge(90));
 
         }
 

@@ -6,14 +6,11 @@
         private SingleNode<T> _head;
         private SingleNode<T> _tail;
 
-        
-
         public SingleLinkedList()
         {
             _count = 0;
             _head = null;
             _tail = null;
-            
         }
 
         public void AddLast(T item)
@@ -24,24 +21,17 @@
                 Next = null,
             };
 
-            _tail = newNode;
-
-            if (_count == 0)
+            if (_tail is null)
             {
-                _head = newNode;
+                _head = _tail = newNode;
             }
+            else
+            {
+                _tail.Next = newNode;
+                _tail = newNode;
+            }
+
             _count++;
-
-            //_node.Value = item;
-            //_node.Next = null;
-            
-            //_tail = _node;
-
-            //if (_count == 0)
-            //{
-            //    _head = _node;
-            //}
-            //_count++;
         }
 
         public void AddFirst(T item)
@@ -71,10 +61,9 @@
             //_count++;
         }
 
-
         public void AddAfter(int nodeIndex, T addValue)
         {
-            
+
             //var checkNode = Get(nodeIndex);
             //var nextNode = Get(nodeIndex + 1);
 
@@ -106,95 +95,54 @@
 
         }
 
-
-
         public SingleNode<T> Get(int nodeNumber)
         {
-            
-            var _newNode = new SingleLinkedList<T>();
-
-            var _newSingleNode = new SingleNode<T>();
-            
-            _newNode._head = _head;
-            _newNode._tail = _tail;
-            _newNode._count = _count;
-
-            _newSingleNode = _head;
-            
-            if (_count == 0 || _count < nodeNumber)
+            var counter = 0;
+            SingleNode<T> result = null;
+            var startPoint = _head;
+            while (startPoint.Next != null)
             {
-                throw new ArgumentOutOfRangeException();
+                if (nodeNumber == counter)
+                {
+                    result = startPoint;
+                    break;
+                }
+                counter++;
+                startPoint = startPoint.Next;
             }
 
-
-            for (int i = 1; i < nodeNumber ; i++)
-            {
-
-                 _newSingleNode = _newNode._head.Next;
-            }
-            
-            return _newSingleNode!;
-
+            return result;
         }
-
-
-
 
         public SingleNode<T> Head() { return _head; }
 
         public SingleNode<T> Tail() { return _tail; }
 
-
-
         public void Remove(int removeElement)
         {
-            
-            var remove = Get(removeElement);
-            var linked1 = Get(removeElement - 1);
-            var linked2 = Get(removeElement+1);
-
-            linked1.Next = linked2;
-           
+            var currentNode = Get(removeElement);
+            var prevNode = Get(removeElement - 1);
+            prevNode.Next = currentNode.Next;
         }
 
-
-        public bool Contains(T? item)
+        public bool Contains(T item)
         {
-            return true;
-            //while (true)
-            //{
+            var result = false;
+            var temp = _head;
+            while (temp.Next != null)
+            {
+                if (temp.Value.Equals(item))
+                {
+                    result = true;
+                    break;
+                }
 
-            //    T _value = _node.Value;
+                temp = temp.Next;
+            }
 
-            //    if (_value.Equals(item))
-            //    {
-            //        return true;
-            //        break;
-            //    }
-
-            //    _node = _node.Next;
-
-            //    if (_node.Next == null)
-            //    {
-            //        return false;
-            //        break;
-            //    }
-
-
-            //
-
-                //}
+            return result;
         }
-
-
-
-
-
-
-        
 
         public int Count { get { return _count; } }
-
-        public Type ListType { get { return typeof(T); } }
     }
 }
