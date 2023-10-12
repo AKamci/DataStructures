@@ -107,5 +107,22 @@ namespace Stack.Tests
             Assert.Equal(0, stack.Size());
             Assert.True(stack.IsEmpty());
         }
+
+        [Fact]
+        public void Should_Push_101_Elements()
+        {
+            // Arrange
+            var stack = new Stack<int>();
+
+            // Act
+            var numbers = Enumerable.Range(1, 101);
+            foreach (var number in numbers)
+            {
+                stack.Push(number);
+            }
+
+            // Assess
+            Assert.Equal(100, stack.Size());
+        }
     }
 }
