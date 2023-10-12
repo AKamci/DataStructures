@@ -1,4 +1,4 @@
-﻿namespace LinkedList
+﻿namespace LinkedList.SinglyLinkedList
 {
     public class SingleLinkedList<T>
     {
