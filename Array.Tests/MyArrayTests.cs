@@ -85,7 +85,7 @@ namespace Array.Tests
             // Assess
             var result = array.Clear().Length;
 
-            Assert.Equal(array.Length, result);
+            Assert.Equal(array.Capacity, result);
         }
 
         [Fact]
@@ -103,7 +103,26 @@ namespace Array.Tests
 
             Assert.Equal(true, result);
         }
+        [Fact]
+        public void ShouldArrayExtend()
+        {
+            //Arrange
+            var array = new MyArray<int>();
+            var arrayLenght = array.Capacity;
+            //Act
+            for (int i = 0; i < 500; i++)
+            {
+                array.Add(i);
+                if (array.Capacity == i+1)
+                {
+                    array.Extend();
+                }
+            }
+            //Assess
+            Assert.Equal(800, array.Capacity);
 
+        }
+        
         [Fact]
         public void CanEnlargeToArray()
         {
@@ -116,7 +135,7 @@ namespace Array.Tests
 
             //Assess
 
-            Assert.Equal(175, array.Length);
+            Assert.Equal(175, array.Capacity);
 
         }
 
@@ -132,7 +151,7 @@ namespace Array.Tests
 
             //Assess
 
-            Assert.Equal(0, array.Length);
+            Assert.Equal(0, array.Capacity);
         }
 
         [Theory]
@@ -185,7 +204,7 @@ namespace Array.Tests
             // Assess
             var result = array.Clear().Length;
 
-            Assert.Equal(array.Length, result);
+            Assert.Equal(array.Capacity, result);
         }
 
         [Theory]
@@ -218,7 +237,7 @@ namespace Array.Tests
 
             //Assess
 
-            Assert.Equal(a, array.Length);
+            Assert.Equal(a, array.Capacity);
 
         }
 
@@ -234,7 +253,7 @@ namespace Array.Tests
 
             //Assess
 
-            Assert.Equal(0, array.Length);
+            Assert.Equal(0, array.Capacity);
         }
 
 

@@ -23,12 +23,11 @@ namespace Stack.Tests
         {
             // Arrange
             var stack = new Stack<int>();
-
-            // Act
-            var number = stack.Pull();
-
             // Assess
-            Assert.Equal(0, number);
+            Assert.Throws<IndexOutOfRangeException>(() =>
+            {
+                var number = stack.Pull();
+            });
         }
 
         [Fact]
@@ -44,7 +43,6 @@ namespace Stack.Tests
             Assert.Equal(1, number);
             Assert.True(stack.IsEmpty());
             Assert.Equal(0, stack.Size());
-            Assert.Equal(0, stack.Top());
         }
 
         [Fact]
@@ -109,20 +107,40 @@ namespace Stack.Tests
         }
 
         [Fact]
-        public void Should_Push_101_Elements()
+        public void Should_Push_N_Elements()
         {
             // Arrange
             var stack = new Stack<int>();
 
             // Act
-            var numbers = Enumerable.Range(1, 101);
+            var numbers = Enumerable.Range(1, 100000);
             foreach (var number in numbers)
             {
                 stack.Push(number);
             }
-
+            
             // Assess
-            Assert.Equal(100, stack.Size());
+            Assert.Equal(100000, stack.Size());
+        }
+        [Fact]
+        public void ShouldFlushAtArray() 
+        {
+            //Arrange
+            var stack = new Stack<int>();
+            //Act
+            stack.Push(85);
+            stack.Push(75);
+            stack.Push(45);
+            stack.Push(95);
+            stack.Push(15);
+            stack.Push(5);
+            stack.Push(185);
+            stack.Push(665);
+            stack.Push(850);
+            stack.Push(815);
+            stack.Flush();
+            //Assess
+            Assert.True(stack.IsEmpty());
         }
     }
 }

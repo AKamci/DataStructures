@@ -68,7 +68,7 @@ namespace NUnit_Test
             // Assess
             var result = array.Clear().Length;
 
-            Assert.AreEqual(array.Length, result);
+            Assert.AreEqual(array.Capacity, result);
         }
 
         [Test]
@@ -99,7 +99,7 @@ namespace NUnit_Test
 
             //Assess
 
-            Assert.AreEqual(array.Length, 175);
+            Assert.AreEqual(array.Capacity, 175);
 
         }
         [Test]
@@ -112,7 +112,7 @@ namespace NUnit_Test
 
             //Assess
             
-            Assert.AreEqual(array.Length, 0 );
+            Assert.AreEqual(array.Capacity, 0 );
         }
 
 

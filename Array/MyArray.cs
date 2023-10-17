@@ -4,13 +4,20 @@
     {
         private T[] _array;
         private int _index = 0;
-        public MyArray(int size = 100)
+        private bool _isDynamic;
+        public MyArray(int size = 100, bool isDynamic = false)
         {
             _array = new T[size];
+            _isDynamic = isDynamic;
+
         }
 
         public void Add(T item)
         {
+            if (_isDynamic && Capacity == Index)
+            {
+                Extend();
+            }
             _array[_index++] = item;
         }
 
@@ -35,12 +42,26 @@
 
         public T Get(int index)
         {
+            if (index <0)
+            {
+                throw new IndexOutOfRangeException();
+            }
             return _array[index];
         }
 
         public void RemoveAt(int index)
         {
             _array[index] = default(T);
+        }
+
+        public void RemoveLast()
+        {
+            RemoveAt(_index-1);
+            _index--;
+        }
+        public void RemoveFirst()
+        {
+            RemoveAt(0);
         }
 
         public void Swap(int sourceIndex, int targetIndex)
@@ -82,7 +103,17 @@
             _array = new T[0];
         }
 
+        public void Extend()
+        {
+            Enlarge(_array.Length*2);
+        }
+        public T GetLatest()
+        {
+            return Get(_index-1);
+        }
+
         // Lambda
-        public int Length => _array.Length;
+        public int Capacity => _array.Length;
+        public int Index => _index;
     }
 }
