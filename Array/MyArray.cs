@@ -42,7 +42,7 @@
 
         public T Get(int index)
         {
-            if (index <0)
+            if (index < 0)
             {
                 throw new IndexOutOfRangeException();
             }
@@ -56,7 +56,7 @@
 
         public void RemoveLast()
         {
-            RemoveAt(_index-1);
+            RemoveAt(_index - 1);
             _index--;
         }
         public void RemoveFirst()
@@ -105,15 +105,17 @@
 
         public void Extend()
         {
-            Enlarge(_array.Length*2);
+            Enlarge(_array.Length * 2);
         }
+
         public T GetLatest()
         {
-            return Get(_index-1);
+            return Get(_index - 1);
         }
 
         // Lambda
         public int Capacity => _array.Length;
         public int Index => _index;
+        public int Length => _array.Count();
     }
 }
