@@ -49,16 +49,6 @@
                 _tail = newNode;
             }
             _count++;
-
-            //_node.Value = item;
-            //_node.Next = _head;
-            //_head = _node;
-
-            //if (_count == 0)
-            //{
-            //    _tail = _node;
-            //}
-            //_count++;
         }
 
         public void AddAfter(int nodeIndex, T addValue)
@@ -115,14 +105,24 @@
         }
 
         public SingleNode<T> Head() { return _head; }
-
         public SingleNode<T> Tail() { return _tail; }
-
         public void Remove(int removeElement)
         {
-            var currentNode = Get(removeElement);
-            var prevNode = Get(removeElement - 1);
-            prevNode.Next = currentNode.Next;
+            if (removeElement == 0)
+            {
+                var currentNode = Get(removeElement);
+                var temp = currentNode.Next;
+                currentNode.Next = null;
+                _head = temp;
+                _count--;
+            }
+            else
+            {
+                var currentNode = Get(removeElement);
+                var prevNode = Get(removeElement - 1);
+                prevNode.Next = currentNode.Next;
+                _count--;
+            }
         }
 
         public bool Contains(T item)
