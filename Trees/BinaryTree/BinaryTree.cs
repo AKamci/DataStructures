@@ -1,32 +1,66 @@
 ﻿namespace BinaryTree
 {
-    public class BinaryTree<T> : IBinaryTree<T>
+    public class BinaryTree<T> : IBinaryTree<T> where T : IComparable<T>
     {
         // Number of nodes
         private int _numberOfNodes = 0;
 
         private BinaryNode<T> _rootNode;
 
-        public BinaryTree(T value)
+        public BinaryTree()
         {
-            _rootNode = new BinaryNode<T>(value);
             _numberOfNodes++;
         }
 
-        public T AddLeft(T value)
+        public void Add(T value)
         {
-            throw new NotImplementedException();
+            _rootNode = InsertRec(_rootNode, value);
         }
 
-        public T AddRight(T value)
+        private BinaryNode<T> InsertRec(BinaryNode<T> rootNode, T value)
         {
-            throw new NotImplementedException();
+            if (rootNode == null)
+            {
+                return new BinaryNode<T>(value);
+            }
+
+            if (value.CompareTo(rootNode.Data) < 0)
+            {
+                rootNode.Left = InsertRec(rootNode.Left, value);
+            }
+            else if (value.CompareTo(rootNode.Data) > 0)
+            {
+                rootNode.Right = InsertRec(rootNode.Right, value);
+            }
+
+            return rootNode;
         }
 
         public bool Contains(T value)
         {
-            throw new NotImplementedException();
+            return SearchRec(_rootNode, value);
         }
+
+        private bool SearchRec(BinaryNode<T> root, T value)
+        {
+            if (root == null)
+            {
+                return false;
+            }
+
+            if (root.Data.CompareTo(value) == 0)
+            {
+                return true;
+            }
+
+            if (value.CompareTo(root.Data) < 0)
+            {
+                return SearchRec(root.Left, value);
+            }
+
+            return SearchRec(root.Right, value);
+        }
+
 
         public BinaryNode<T> DepthFirstSearch(T value)
         {

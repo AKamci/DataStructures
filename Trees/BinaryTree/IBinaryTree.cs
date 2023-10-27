@@ -2,9 +2,7 @@
 {
     public interface IBinaryTree<T>
     {
-        T AddLeft(T value);
-
-        T AddRight(T value);
+        void Add(T value);
 
         void Remove(T value);
 
