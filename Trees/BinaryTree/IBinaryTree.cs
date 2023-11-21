@@ -6,7 +6,7 @@
 
         void Remove(T value);
 
-        BinaryNode<T> DepthFirstSearch(T value);
+        BinaryNode<T> DepthFirstSearch(T value, BinaryNode<T> Node);
 
         int Height();
 
@@ -14,9 +14,9 @@
 
         int Size();
 
-        bool IsLeaf();
+        bool IsLeaf(BinaryNode<T> node);
 
-        int NumberOfLeaves();
+        int NumberOfLeaves(BinaryNode<T> node);
 
         int NumberOfEdges();
 
@@ -24,9 +24,9 @@
 
         bool IsFull();
 
-        bool IsComplete();
+        bool IsComplete(BinaryNode<T> node);
 
-        bool IsPerfect();
+        bool IsPerfect(BinaryNode<T> node);
 
         bool IsBalanced();
 
