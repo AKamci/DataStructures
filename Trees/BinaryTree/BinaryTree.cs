@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using Queue;
+using System.Xml.Linq;
 
 namespace BinaryTree
 {
@@ -6,20 +7,18 @@ namespace BinaryTree
     {
         // Number of nodes
         private int _numberOfNodes = 0;
+        private T[] treeValues;
 
         private BinaryNode<T> _rootNode;
-
         public BinaryTree()
         {
            
         }
-
         public void Add(T value)
         {
             _numberOfNodes++;
             _rootNode = InsertRec(_rootNode, value, 0);
         }
-
         private BinaryNode<T> InsertRec(BinaryNode<T> rootNode, T value, int depth)
         {
             if (rootNode == null)
@@ -56,7 +55,6 @@ namespace BinaryTree
         {
             return SearchRec(_rootNode, value);
         }
-
         private bool SearchRec(BinaryNode<T> root, T value)
         {
             if (root == null)
@@ -76,8 +74,6 @@ namespace BinaryTree
 
             return SearchRec(root.Right, value);
         }
-
-
         public BinaryNode<T> DepthFirstSearch(T value, BinaryNode<T> root)
         {
             if (root == null || (root.Data.CompareTo(value) == 0))
@@ -95,43 +91,77 @@ namespace BinaryTree
             return rightResult;
 
         }
-
         public BinaryNode<T> GetRoot()
         {
             return _rootNode;
         }
-
-        //Length of highest path
-        public int Height() => _rootNode.Height; //(int)Math.Log2((_numberOfNodes + 1) / 2);
-
-        public bool IsBalanced()
+        public int Height() => _rootNode.Height;
+        public bool IsBalanced(BinaryNode<T> node)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool IsComplete(BinaryNode<T> root)
-        {
-            if (root == null)
-                return true;
-
-            if (root.Left == null && root.Right == null)
+            if (node == null)
             {
                 return true;
             }
 
-            return (IsComplete(root.Left) && IsComplete(root.Right));            
+            if (node.Left != null && node.Right != null)
+            {
+                if (Math.Abs(node.Left.Height - node.Right.Height) > 1)
+                {
+                    return false;
+                }
+            }
+            return IsBalanced(node.Left) && IsBalanced(node.Right);
         }
-
-        public bool IsFull()
+        public bool IsComplete(BinaryNode<T> root)
         {
-            throw new NotImplementedException();
-        }
+           ArrayQueue<BinaryNode<T>> queue = new ArrayQueue<BinaryNode<T>>();
+            bool hasEmpty = false;
 
+            queue.Enqueue(root);
+
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+
+                if (current == null)
+                {
+                    hasEmpty = true;
+                }
+                else
+                {
+                    if (hasEmpty)
+                    {
+                        return false;
+                    }
+                    queue.Enqueue(current.Left);
+                    queue.Enqueue(current.Right);
+                }
+            }
+
+            return true;
+
+        }
+        public bool IsFull(BinaryNode<T> node)
+        {
+                if (node == null)
+                    return true;
+
+                if (node.Left == null && node.Right == null)
+                    return true;
+
+                if ((node.Left != null) && (node.Right != null))
+                    return (IsFull(node.Left) && IsFull(node.Right));
+
+                return false;
+            }
         public bool IsLeaf(BinaryNode<T> root)
         {
-            return true;
+            if (root.Height == 0)
+            {
+                return true;
+            }
+            return false;
         }
-
         public bool IsPerfect(BinaryNode<T> root)
         {
             
@@ -151,35 +181,177 @@ namespace BinaryTree
             
 
         }
-
         public int Level() => (int)(Math.Log2(_numberOfNodes + 1) - 1);
-
         public int NumberOfEdges()
         {
             return _numberOfNodes != 0 ? _numberOfNodes - 1 : 0;
         }
-
         public int NumberOfLeaves(BinaryNode<T> root)
         {
-           
+            if (root == null)
+            {
+                return 0;
+            }           
             if (root.Height == 0)
                 return 1;
             else
                 return NumberOfLeaves(root.Left) + NumberOfLeaves(root.Right);
 
         }
-        public void Remove(T value)
+        public BinaryNode<T> Remove(BinaryNode<T> root, T value)
         {
-            throw new NotImplementedException();
-        }
 
+            if (root == null)
+                return root;
+
+            if (root.Data.CompareTo(value) > 0)
+            {
+              root.Left = Remove(root.Left, value);
+              return root;        
+            }
+            else if (root.Data.CompareTo(value) < 0)
+            {
+                root.Right = Remove(root.Right, value);
+                return root;
+            }
+
+            if (root.Left == null)
+            {
+                var temp = root.Right;
+                root = null;
+                return temp;
+            }
+            else if (root.Right == null)
+            {
+                var temp = root.Left;
+                root = null;
+                return temp;
+            }
+
+            else
+            {
+
+                var succParent = root;
+
+                var succ = root.Right;
+                while (succ.Left != null)
+                {
+                    succParent = succ;
+                    succ = succ.Left;
+                }
+
+                if (succParent != root)
+                    succParent.Left = succ.Right;
+                else
+                    succParent.Right = succ.Right;
+
+                root.Data = succ.Data;
+                succ = null;
+                return root;
+            }
+
+        }
         public int Size()
         {
             return _numberOfNodes;
         }
+        public T[] GetValuesAsArray()
+        {
+            List<T> valuesList = new List<T>();
+            TraverseInOrder(_rootNode, valuesList);
+            return valuesList.ToArray();
+        }
+        private void TraverseInOrder(BinaryNode<T> node, List<T> valuesList)
+        {
+            if (node != null)
+            {
+                TraverseInOrder(node.Left, valuesList);
+                valuesList.Add(node.Data);
+                TraverseInOrder(node.Right, valuesList);
+            }
+        }
+        public void deleteDeepest(BinaryNode<T> root, BinaryNode<T> delNode)
+        {
+            Queue<BinaryNode<T>> q = new Queue<BinaryNode<T>>();
+            q.Enqueue(root);
 
+            BinaryNode<T> temp = null;
 
+            while (q.Count != 0)
+            {
+                temp = q.Peek();
+                q.Dequeue();
 
-        
+                if (temp == delNode)
+                {
+                    temp = null;
+                    return;
+                }
+                if (temp.Right != null)
+                {
+                    if (temp.Right == delNode)
+                    {
+                        temp.Right = null;
+                        return;
+                    }
+
+                    else
+                        q.Enqueue(temp.Right);
+                }
+
+                if (temp.Left != null)
+                {
+                    if (temp.Left == delNode)
+                    {
+                        temp.Left = null;
+                        return;
+                    }
+                    else
+                        q.Enqueue(temp.Left);
+                }
+            }
+        }
+        public void delete(BinaryNode<T> root, int key)
+        {
+            if (root == null)
+                return;
+
+            if (root.Left == null && root.Right == null)
+            {
+                if (key.CompareTo(root.Data) == 0)
+                {
+                    root = null;
+                    return;
+                }
+                else
+                    return;
+            }
+
+            Queue<BinaryNode<T>> q = new Queue<BinaryNode<T>>();
+            q.Enqueue(root);
+            BinaryNode<T> temp = null, keyNode = null;
+
+            while (q.Count != 0)
+            {
+                temp = q.Peek();
+                q.Dequeue();
+
+                if (key.CompareTo(temp.Data) == 0)
+                    keyNode = temp;
+
+                if (temp.Left != null)
+                    q.Enqueue(temp.Left);
+
+                if (temp.Right != null)
+                    q.Enqueue(temp.Right);
+            }
+
+            if (keyNode != null)
+            {
+                T x = temp.Data;
+                deleteDeepest(root, temp);
+                keyNode.Data = x;
+            }
+        }
     }
 }

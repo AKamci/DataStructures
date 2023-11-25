@@ -4,7 +4,7 @@
     {
         void Add(T value);
 
-        void Remove(T value);
+        BinaryNode<T> Remove(BinaryNode<T> node, T value);
 
         BinaryNode<T> DepthFirstSearch(T value, BinaryNode<T> Node);
 
@@ -22,13 +22,13 @@
 
         bool Contains(T value);
 
-        bool IsFull();
+        bool IsFull(BinaryNode<T> node);
 
         bool IsComplete(BinaryNode<T> node);
 
         bool IsPerfect(BinaryNode<T> node);
 
-        bool IsBalanced();
+        bool IsBalanced(BinaryNode<T> node);
 
         BinaryNode<T> GetRoot();
     }
