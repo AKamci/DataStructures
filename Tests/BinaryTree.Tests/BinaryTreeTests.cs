@@ -7,74 +7,32 @@ namespace BinaryTree.Tests
         {
             // Arrange
             BinaryTree<int> bt = new();
-
             // Act
-
             // Assess
             Assert.NotNull(bt);
         }
-
         [Fact]
         public void Should_Insert_Number()
         {
             // Arrange
-            var bt = new BinaryTree<int>();
-            //bt.Add(50);
-            //bt.Add(30);
-            //bt.Add(70);
-            //bt.Add(20);
-            //bt.Add(40);
-            //bt.Add(60);
-            //bt.Add(90);
-            //bt.Add(10);
-            //bt.Add(100);
-            //bt.Add(80);
-            //bt.Add(75);
-            //bt.Add(15);
-
+            var bt = new BinaryTree<int>();           
             bt.Add(50);
-            bt.Add(25);
-            bt.Add(60);
-            bt.Add(10);
-            bt.Add(30);
-            bt.Add(70);
+            bt.Add(215);
+            bt.Add(620);
+            bt.Add(110);
+            bt.Add(350);
+            bt.Add(740);
             bt.Add(55);
-            bt.Add(5);
-            bt.Add(12);
-            bt.Add(3);
-            bt.Add(6);
-        
-            //int _size = bt.Size(); 
-            //int _height = bt.Height();
-            //int _level = bt.Level();
-            var _root = bt.GetRoot();
-            //bool _isPerfect = bt.IsPerfect(_root);
-            //int leafCount = bt.NumberOfLeaves(_root);
-            //bool isComplete = bt.IsComplete(_root);
-            //bool isFull = bt.IsFull(_root);
-            //bool isBalanced = bt.IsBalanced(_root);
-
-            bt.delete(_root, 10);
-            var sayi = bt.Size();
-            var _array = bt.GetValuesAsArray();
-
-
+            bt.Add(50);
+            bt.Add(102);
+            bt.Add(33);
+            bt.Add(68);                  
             // Act
             var root = bt.GetRoot();
-
+            var quantity = bt.Size();
             // Assess
-            Assert.Equal(10,sayi);
-
-
-
-           // Assert.True(isBalanced);
-            //Assert.True(isComplete);
-            //Assert.True(isFull);
-            //Assert.Equal(5, leafCount);
-           // Assert.True(_isPerfect);
-         //   Assert.Equal(50, root.Data);
+            Assert.Equal(quantity,11);
         }
-
         [Fact]
         public void Should_Search_Number()
         {
@@ -91,6 +49,131 @@ namespace BinaryTree.Tests
 
             // Assess
             Assert.True(contains40);
+        }
+        [Fact]
+        public void Should_Full_Control() 
+        {
+            //Arrange
+            var bt = new BinaryTree<int>();
+            //Act
+            bt.Add(50);
+            bt.Add(25);
+            bt.Add(60);
+            bt.Add(10);
+            bt.Add(30);
+            bt.Add(70);
+            bt.Add(5);
+            bt.Add(50);
+            bt.Add(12);
+            bt.Add(3);
+            bt.Add(6);
+            //Assess
+            var _rootNode = bt.GetRoot();
+            bool isFull = bt.IsFull(_rootNode);
+            Assert.True(isFull);
+        }
+        [Fact]
+        public void Should_Balanced_Control()
+        {
+            //Arrange
+            var bt = new BinaryTree<int>();
+            //Act
+            bt.Add(50);
+            bt.Add(25);
+            bt.Add(60);
+            bt.Add(10);
+            bt.Add(30);
+            bt.Add(70);
+            bt.Add(5);
+            bt.Add(50);
+            bt.Add(12);        
+            //Assesss
+            var _rootNode = bt.GetRoot();
+            bool isBalanced = bt.IsBalanced(_rootNode);
+            Assert.True(isBalanced);
+        }
+        [Fact]
+        public void Should_Complete_Control()
+        {
+            //Arrange
+            var bt = new BinaryTree<int>();
+            //Act
+            bt.Add(50);
+            bt.Add(25);
+            bt.Add(60);
+            bt.Add(10);
+            bt.Add(30);
+            bt.Add(70);
+            bt.Add(5);
+            bt.Add(50);
+            bt.Add(12);
+            //Assess
+            var _rootNode = bt.GetRoot();
+            var isComplete = bt.IsComplete(_rootNode);
+            Assert.True(isComplete);
+        }
+        [Fact]
+        public void Should_Perfect_Control()
+        {
+            //Arrange
+            var bt = new BinaryTree<int>();
+            //Act
+            bt.Add(50);
+            bt.Add(25);
+            bt.Add(60);
+            bt.Add(10);
+            bt.Add(30);
+            bt.Add(70);
+            bt.Add(50);        
+            //Assess
+            var _rootNode = bt.GetRoot();
+            var isPerfect = bt.IsPerfect(_rootNode);
+            Assert.True(isPerfect);
+        }
+        [Fact]
+        public void Should_Remove_Element_ByTree()
+        {
+            //Arrange
+            var bt = new BinaryTree<int>();
+            //Act
+            bt.Add(50);
+            bt.Add(25);
+            bt.Add(60);
+            bt.Add(10);
+            bt.Add(30);
+            bt.Add(70);
+            bt.Add(5);
+            bt.Add(50);
+            bt.Add(12);
+            bt.Add(3);
+            bt.Add(6);
+            //Assess
+            var _rootNode = bt.GetRoot();
+            bt.delete(_rootNode, 10);
+            Assert.True(!bt.Contains(10));
+        }
+        [Fact]
+        public void Should_Correct_Sort()
+        {
+            //Arrange
+            var bt = new BinaryTree<int>();
+            //Act
+            bt.Add(50);
+            bt.Add(25);
+            bt.Add(60);
+            bt.Add(10);
+            bt.Add(30);
+            bt.Add(70);
+            bt.Add(55);
+            bt.Add(5);
+            bt.Add(12);
+            bt.Add(3);
+            bt.Add(6);
+            //Assess
+            var _rootNode = bt.GetRoot();
+            var _array = bt.GetValuesAsArray();
+            int[] correctArray = { 3, 5, 6, 10, 12, 25, 30, 50, 55, 60, 70 };
+            Assert.Equal(_array, correctArray);
         }
     }
 }
