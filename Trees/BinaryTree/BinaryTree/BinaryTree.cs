@@ -1,7 +1,11 @@
 ﻿using Queue;
-using System.Xml.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BinaryTree
+namespace BinaryTree.BinaryTree
 {
     public class BinaryTree<T> : IBinaryTree<T> where T : IComparable<T>
     {
@@ -12,7 +16,7 @@ namespace BinaryTree
         private BinaryNode<T> _rootNode;
         public BinaryTree()
         {
-           
+
         }
         public void Add(T value)
         {
@@ -22,24 +26,17 @@ namespace BinaryTree
         private BinaryNode<T> InsertRec(BinaryNode<T> rootNode, T value, int depth)
         {
             if (rootNode == null)
-            {               
-                return new BinaryNode<T>(value,depth);   
-            }
-
-            if (value.CompareTo(rootNode.Data) < 0)
             {
-                rootNode.Left = InsertRec(rootNode.Left, value, depth+1);
-
+                return new BinaryNode<T>(value, depth);
             }
-            else if (value.CompareTo(rootNode.Data) > 0)
+            if (rootNode.Left == null)
+            {
+                rootNode.Left = InsertRec(rootNode.Left, value, depth + 1);
+            }
+            else if (rootNode.Right == null)
             {
                 rootNode.Right = InsertRec(rootNode.Right, value, depth + 1);
-            }
-            else if (value.CompareTo(rootNode.Data) == 0) 
-            {
-                rootNode.Right = InsertRec(rootNode.Right, value, depth + 1);
-            }
-
+            }           
             rootNode.Height = Math.Max(GetHeight(rootNode.Left), GetHeight(rootNode.Right)) + 1;
             return rootNode;
         }
@@ -76,7 +73,7 @@ namespace BinaryTree
         }
         public BinaryNode<T> DepthFirstSearch(T value, BinaryNode<T> root)
         {
-            if (root == null || (root.Data.CompareTo(value) == 0))
+            if (root == null || root.Data.CompareTo(value) == 0)
             {
                 return root;
             }
@@ -114,7 +111,7 @@ namespace BinaryTree
         }
         public bool IsComplete(BinaryNode<T> root)
         {
-           ArrayQueue<BinaryNode<T>> queue = new ArrayQueue<BinaryNode<T>>();
+            ArrayQueue<BinaryNode<T>> queue = new ArrayQueue<BinaryNode<T>>();
             bool hasEmpty = false;
 
             queue.Enqueue(root);
@@ -143,17 +140,17 @@ namespace BinaryTree
         }
         public bool IsFull(BinaryNode<T> node)
         {
-                if (node == null)
-                    return true;
+            if (node == null)
+                return true;
 
-                if (node.Left == null && node.Right == null)
-                    return true;
+            if (node.Left == null && node.Right == null)
+                return true;
 
-                if ((node.Left != null) && (node.Right != null))
-                    return (IsFull(node.Left) && IsFull(node.Right));
+            if (node.Left != null && node.Right != null)
+                return IsFull(node.Left) && IsFull(node.Right);
 
-                return false;
-            }
+            return false;
+        }
         public bool IsLeaf(BinaryNode<T> root)
         {
             if (root.Height == 0)
@@ -164,21 +161,21 @@ namespace BinaryTree
         }
         public bool IsPerfect(BinaryNode<T> root)
         {
-            
+
             if (root == null)
                 return true;
 
-            
-            if (root.Left == null && root.Right == null)
-                return (root.Depth == Height());
 
-           
+            if (root.Left == null && root.Right == null)
+                return root.Depth == Height();
+
+
             if (root.Left == null || root.Right == null)
                 return false;
 
-            
+
             return IsPerfect(root.Left) && IsPerfect(root.Right);
-            
+
 
         }
         public int Level() => (int)(Math.Log2(_numberOfNodes + 1) - 1);
@@ -191,7 +188,7 @@ namespace BinaryTree
             if (root == null)
             {
                 return 0;
-            }           
+            }
             if (root.Height == 0)
                 return 1;
             else
@@ -206,8 +203,8 @@ namespace BinaryTree
 
             if (root.Data.CompareTo(value) > 0)
             {
-              root.Left = Remove(root.Left, value);
-              return root;        
+                root.Left = Remove(root.Left, value);
+                return root;
             }
             else if (root.Data.CompareTo(value) < 0)
             {

@@ -1,8 +1,13 @@
-using BinaryTree.BinarySearchTree;
+﻿using BinaryTree.BinarySearchTree;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BinaryTree.Tests
 {
-    public class BinaryTreeTests
+    public class BinarySearchTreeTests
     {
         [Fact]
         public void Should_Create_BT_Instance()
@@ -17,7 +22,7 @@ namespace BinaryTree.Tests
         public void Should_Insert_Number()
         {
             // Arrange
-            var bt = new BinaryTree<int>();           
+            var bt = new BinaryTree<int>();
             bt.Add(50);
             bt.Add(215);
             bt.Add(620);
@@ -28,12 +33,12 @@ namespace BinaryTree.Tests
             bt.Add(50);
             bt.Add(102);
             bt.Add(33);
-            bt.Add(68);                  
+            bt.Add(68);
             // Act
             var root = bt.GetRoot();
             var quantity = bt.Size();
             // Assess
-            Assert.Equal(quantity,11);
+            Assert.Equal(quantity, 11);
         }
         [Fact]
         public void Should_Search_Number()
@@ -53,7 +58,7 @@ namespace BinaryTree.Tests
             Assert.True(contains40);
         }
         [Fact]
-        public void Should_Full_Control() 
+        public void Should_Full_Control()
         {
             //Arrange
             var bt = new BinaryTree<int>();
@@ -88,7 +93,7 @@ namespace BinaryTree.Tests
             bt.Add(70);
             bt.Add(5);
             bt.Add(50);
-            bt.Add(12);        
+            bt.Add(12);
             //Assesss
             var _rootNode = bt.GetRoot();
             bool isBalanced = bt.IsBalanced(_rootNode);
@@ -126,7 +131,7 @@ namespace BinaryTree.Tests
             bt.Add(10);
             bt.Add(30);
             bt.Add(70);
-            bt.Add(50);        
+            bt.Add(50);
             //Assess
             var _rootNode = bt.GetRoot();
             var isPerfect = bt.IsPerfect(_rootNode);
@@ -177,5 +182,8 @@ namespace BinaryTree.Tests
             int[] correctArray = { 3, 5, 6, 10, 12, 25, 30, 50, 55, 60, 70 };
             Assert.Equal(_array, correctArray);
         }
+
+
+
     }
 }
