@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Queue\Queue.csproj" />
+    <ProjectReference Include="..\Queue\Queue.csproj" />
   </ItemGroup>
 
 </Project>

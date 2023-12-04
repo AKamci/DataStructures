@@ -24,8 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\DataStructures\Stack\Stack.csproj" />
-    <ProjectReference Include="..\..\Datastructures\Queue\Queue.csproj" />
-    <ProjectReference Include="..\..\Datastructures\Stack\Stack.csproj" />
   </ItemGroup>
 
 </Project>

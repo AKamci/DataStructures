@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queue", "DataStructures\Que
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queue.Tests", "Tests\Queue.Tests\Queue.Tests.csproj", "{DACDAEA6-0B9D-48F8-BACA-F6E58B102666}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTree", "DataStructures\Trees\BinaryTree\BinaryTree.csproj", "{9EDFBBB0-6B19-4316-B76B-D3F21FE7684A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTree", "DataStructures\BinaryTree\BinaryTree.csproj", "{9EDFBBB0-6B19-4316-B76B-D3F21FE7684A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTree.Tests", "Tests\BinaryTree.Tests\BinaryTree.Tests.csproj", "{0673A129-08B6-48AD-A3FB-DCDA4F3F0176}"
 EndProject
