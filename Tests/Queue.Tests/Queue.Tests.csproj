@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DataStructures\Queue\Queue.csproj" />
     <ProjectReference Include="..\..\Queue\Queue.csproj" />
   </ItemGroup>
 

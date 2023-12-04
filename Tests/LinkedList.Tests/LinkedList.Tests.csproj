@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Array\Array.csproj" />
+    <ProjectReference Include="..\..\DataStructures\LinkedList\LinkedList.csproj" />
   </ItemGroup>
 
 </Project>

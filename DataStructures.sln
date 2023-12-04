@@ -3,35 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Array", "Array\Array.csproj", "{97EB5D63-2570-452D-9B91-CD7CE711F087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Array", "DataStructures\Array\Array.csproj", "{97EB5D63-2570-452D-9B91-CD7CE711F087}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Array.Tests", "Array.Tests\Array.Tests.csproj", "{12742B2F-AC3F-4D7D-AF97-12FFA243CC4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Array.Tests", "Tests\Array.Tests\Array.Tests.csproj", "{12742B2F-AC3F-4D7D-AF97-12FFA243CC4F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnit_Test", "NUnit_Test\NUnit_Test.csproj", "{E895535C-DFFA-4777-8949-FF8AED959EF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnit_Test", "Tests\NUnit_Test\NUnit_Test.csproj", "{E895535C-DFFA-4777-8949-FF8AED959EF4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList", "LinkedList\LinkedList.csproj", "{FEFABCD8-6C92-456C-87FB-C206CC66B056}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList", "DataStructures\LinkedList\LinkedList.csproj", "{FEFABCD8-6C92-456C-87FB-C206CC66B056}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList.Tests", "LinkedList.Tests\LinkedList.Tests.csproj", "{FD0B9C9F-E12F-4199-920F-C06FC28936BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList.Tests", "Tests\LinkedList.Tests\LinkedList.Tests.csproj", "{FD0B9C9F-E12F-4199-920F-C06FC28936BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Datastructures", "Datastructures", "{3594BFF3-8CFF-4D3C-A0B9-5BB500D88708}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D7FCC38A-F9D6-4133-A116-D425F05F3641}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stack", "Stack\Stack.csproj", "{A7053C73-87AA-4488-8565-1ED5302D6F80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stack", "DataStructures\Stack\Stack.csproj", "{A7053C73-87AA-4488-8565-1ED5302D6F80}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stack.Tests", "Tests\Stack.Tests\Stack.Tests.csproj", "{36264B47-1F3C-4DA1-A1D1-C76D8B68DAB1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queue", "Queue\Queue.csproj", "{DA962D09-874C-4A9F-8362-20CE4A40C9FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queue", "DataStructures\Queue\Queue.csproj", "{DA962D09-874C-4A9F-8362-20CE4A40C9FA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queue.Tests", "Tests\Queue.Tests\Queue.Tests.csproj", "{DACDAEA6-0B9D-48F8-BACA-F6E58B102666}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTree", "Trees\BinaryTree\BinaryTree.csproj", "{9EDFBBB0-6B19-4316-B76B-D3F21FE7684A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTree", "DataStructures\Trees\BinaryTree\BinaryTree.csproj", "{9EDFBBB0-6B19-4316-B76B-D3F21FE7684A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTree.Tests", "Tests\BinaryTree.Tests\BinaryTree.Tests.csproj", "{0673A129-08B6-48AD-A3FB-DCDA4F3F0176}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph", "DataStructures\Graph\Graph.csproj", "{CD3D8331-5E08-4E0E-A5E4-DC4759FBFAEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph", "DataStructures\Graph\Graph.csproj", "{CD3D8331-5E08-4E0E-A5E4-DC4759FBFAEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph.Tests", "Tests\Graph.Tests\Graph.Tests.csproj", "{7CCA3FE6-0485-45F4-A579-357A416C0AEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Tests", "Tests\Graph.Tests\Graph.Tests.csproj", "{7CCA3FE6-0485-45F4-A579-357A416C0AEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

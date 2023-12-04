@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DataStructures\Trees\BinaryTree\BinaryTree.csproj" />
     <ProjectReference Include="..\..\Trees\BinaryTree\BinaryTree.csproj" />
   </ItemGroup>
 
