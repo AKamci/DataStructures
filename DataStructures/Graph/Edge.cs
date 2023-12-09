@@ -10,5 +10,6 @@ public class Edge
         From = from;
         To = to;
         Weight = weight;
+        
     }
 }
