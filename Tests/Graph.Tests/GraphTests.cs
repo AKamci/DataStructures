@@ -92,6 +92,7 @@
             graph.AddEdge(edgeED);          
             var edgeNumber = graph.NumberOfEdges;
             var nodeNumber = graph.NumberOfNodes;
+         
             Assert.Equal(9,edgeNumber);
             Assert.Equal(7,nodeNumber);
         }
